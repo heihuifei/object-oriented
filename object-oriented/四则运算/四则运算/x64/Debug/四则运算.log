@@ -1,0 +1,12 @@
+﻿  main.cpp
+c:\users\胡绪佩\learngit\arithmetic-test-for-primary-school-students\四则运算\四则运算\Expression.h(17): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\胡绪佩\learngit\arithmetic-test-for-primary-school-students\四则运算\四则运算\Expression.h(17): warning C4267: “初始化”: 从“size_t”转换到“const int”，可能丢失数据
+c:\users\胡绪佩\learngit\arithmetic-test-for-primary-school-students\四则运算\四则运算\Expression.h(23): warning C4244: “=”: 从“__int64”转换到“unsigned long”，可能丢失数据
+c:\users\胡绪佩\learngit\arithmetic-test-for-primary-school-students\四则运算\四则运算\Expression.h(319): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\胡绪佩\learngit\arithmetic-test-for-primary-school-students\四则运算\四则运算\Expression.h(398): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\胡绪佩\learngit\arithmetic-test-for-primary-school-students\四则运算\四则运算\Expression.h(410): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\胡绪佩\learngit\arithmetic-test-for-primary-school-students\四则运算\四则运算\LanguageResource.h(8): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+  main.obj :托管的代码存在时 /DEBUG:FASTLINK 不受支持；正在重新启动与 /DEBUG:FULL 的链接
+  四则运算.vcxproj -> C:\Users\胡绪佩\learngit\Arithmetic-Test-for-Primary-School-Students\四则运算\x64\Debug\四则运算.exe
+  四则运算.vcxproj -> C:\Users\胡绪佩\learngit\Arithmetic-Test-for-Primary-School-Students\四则运算\x64\Debug\四则运算.pdb (Partial PDB)
