@@ -1,0 +1,5 @@
+﻿  main.cpp
+e:\学习面对对象\primary-school-students\primary-school-students\expression.h(23): warning C4244: “=”: 从“__int64”转换到“unsigned long”，可能丢失数据
+e:\学习面对对象\primary-school-students\primary-school-students\languageresource.h(8): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+  Primary-School-Students.vcxproj -> E:\学习面对对象\Primary-School-Students\Debug\Primary-School-Students.exe
+  Primary-School-Students.vcxproj -> E:\学习面对对象\Primary-School-Students\Debug\Primary-School-Students.pdb (Partial PDB)

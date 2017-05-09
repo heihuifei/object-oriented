@@ -1,0 +1,20 @@
+6
+No.1	0-7-(9/1)+2/(2-3)
+	Please enter your answer:2
+No.2	1-1*0+0*(8/4)
+	Please enter your answer:3
+No.3	(0+0)/(1/1)*(0/5)
+	Please enter your answer:4
+No.4	(5-6)*2-(10+10)
+	Please enter your answer:5
+No.5	(2-3)*6*3+9+7
+	Please enter your answer:6
+No.6	9+(3*10)+(0/1)-2
+	Please enter your answer:4
+Results Statistics:
+
+The number of right answer(s) you did is:0
+The number of wrong answer(s) you did is:6
+The correct rate is:0%
+
+The program is going to be finished. Goodbye!~
