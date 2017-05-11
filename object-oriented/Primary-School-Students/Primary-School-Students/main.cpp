@@ -7,6 +7,9 @@
 更新：用资源文件管理多语言版本，把语言写到资源中而不是代码中，故对原有代码进行重构
 
 注：关于Resource[i]中的内容请注意头文件LanguageResource.h内的注释说明
+
+迭代者：HXP  日期：2017/05/11
+更新：通过主函数传参数命令行参数形式以及将输入输出通过文件方式实现
 *******************************************************************************/
 #include "Expression.h"
 #include "ExtendFunction.h"
@@ -64,22 +67,25 @@ int main(int argc, char* argv[])
 		getchar();
 		return 0;
 	}
+
 	fstream fileout;
-	fileout.open(argv[2], ios::out);
-	fileout << n << endl;
+	fileout.open(argv[2], ios::ate | ios::app);
+	fileout << "您输入的题目数量为：" << n << endl;
+	fileout.close();
+
 	for (i = 1; i <= n; i++)
 	{
 		Expression expression; //题目
 		expression = CreateProblems();
 
 		cout << "No." << i << "\t" << expression << endl;
-		fileout << "No." << i << "\t" << expression << endl;
+		//		fileout << "No." << i << "\t" << expression << endl;
 
 		cout << "\t" << Resource[8];
-		fileout << "\t" << Resource[8];
+		//		fileout << "\t" << Resource[8];
 
 		cin >> answer;
-		fileout << answer << endl;
+		//		fileout << answer << endl;
 
 		bool result = Judge(answer, expression);
 		if (result == true)
@@ -90,28 +96,19 @@ int main(int argc, char* argv[])
 		{
 			numWrong++;
 		}
+		writeQuestionFile(i, answer, expression, argv[2]);	//将每次的题目输出到out.txt文件中；
 		expression.~Expression();
 	}
 
 	accuracy = numRight*1.0 / n * 100;
 
-	cout << Resource[9] << endl << endl;
-	fileout << Resource[9] << endl << endl;
+	Print(numRight, numWrong, accuracy);	//输出用户答题情况函数；
 
-	cout << Resource[10] << numRight << endl;
-	fileout << Resource[10] << numRight << endl;
-
-	cout << Resource[11] << numWrong << endl;
-	fileout << Resource[11] << numWrong << endl;
-
-	cout << Resource[12] << accuracy << "%" << endl;
-	fileout << Resource[12] << accuracy << "%" << endl;
-
-
-	cout << endl << Resource[0] << endl;
-	fileout << endl << Resource[0] << endl;
+	writeAnswerFile(argv[2], numRight, numWrong, accuracy);		//将判断最后正确数等输出到文件中；
+//	cout << exp[1] << endl;
 
 	getchar();
 	getchar();
+	fileout.close();
 	return 0;
 }

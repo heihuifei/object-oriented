@@ -11,13 +11,18 @@
 删除：中英文选择函数。
 修改：输入检测、答案判定的中英文版本，改成单纯函数模块，不包含不同的语言版本
 
+迭代者：HXP   日期：2017/05/10
+更新：将输入输出以文件形式实现，输出功能函数化；
+
 注：关于Resource[i]中的内容请注意头文件LanguageResource.h内的注释说明
 ***************************************************************************/
 
 #include "Expression.h"
 #include "LanguageResource.h"
 
-int readFile(char* filename)
+
+/*通过文件的形式读入用户所要的题目数量*/
+int readFile(char* filename)		
 {
 	int filein;
 	fstream f1;
@@ -25,6 +30,32 @@ int readFile(char* filename)
 	f1 >> filein;
 	f1.close();
 	return filein;
+}
+
+
+/*在每次出题时将题目输出到out.txt文件中*/
+void writeQuestionFile(int i, int answer, Expression & ex,char* filename)
+{
+	fstream f;
+	f.open(filename, ios::ate|ios::app);
+	f << "No." << i << "\t" << ex << endl;
+	f << "\t" << Resource[8];
+	f << answer << endl;
+	f.close();
+
+}
+
+/*在输出答案的时候把答案输出到out.txt文件中*/
+void writeAnswerFile(char* filename,int numRight,int numWrong,double accuracy)//待修改
+{
+	fstream f;
+	f.open(filename, ios::ate|ios::app);
+	f << Resource[9] << endl << endl;
+	f << Resource[10] << numRight << endl;
+	f << Resource[11] << numWrong << endl;
+	f << Resource[12] << accuracy << "%" << endl;
+	f << endl << Resource[0] << endl;
+	f.close();
 }
 
 /*输入检测*/
@@ -102,4 +133,15 @@ bool Judge(int answer, Expression & e)
 		cout << Resource[7] << val << endl << endl;
 		return false;
 	}
+}
+
+void Print(int numRight, int numWrong, double accuracy)
+{
+
+	cout << Resource[9] << endl << endl;
+	cout << Resource[10] << numRight << endl;
+	cout << Resource[11] << numWrong << endl;
+	cout << Resource[12] << accuracy << "%" << endl;
+	cout << endl << Resource[0] << endl;
+
 }
