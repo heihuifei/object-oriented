@@ -114,6 +114,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interaction.h" />
     <ClInclude Include="Expression.h" />
     <ClInclude Include="ExtendFunction.h" />
     <ClInclude Include="LanguageResource.h" />

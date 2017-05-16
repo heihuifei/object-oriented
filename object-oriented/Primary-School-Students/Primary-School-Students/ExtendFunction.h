@@ -22,7 +22,7 @@
 
 
 /*通过文件的形式读入用户所要的题目数量*/
-int readFile(char* filename)		
+int readFile(char* filename)
 {
 	int filein;
 	fstream f1;
@@ -34,10 +34,10 @@ int readFile(char* filename)
 
 
 /*在每次出题时将题目输出到out.txt文件中*/
-void writeQuestionFile(int i, int answer, Expression & ex,char* filename)
+void writeQuestionFile(int i, int answer, Expression & ex, char* filename)
 {
 	fstream f;
-	f.open(filename, ios::ate|ios::app);
+	f.open(filename, ios::ate | ios::app);
 	f << "No." << i << "\t" << ex << endl;
 	f << "\t" << Resource[8];
 	f << answer << endl;
@@ -46,10 +46,10 @@ void writeQuestionFile(int i, int answer, Expression & ex,char* filename)
 }
 
 /*在输出答案的时候把答案输出到out.txt文件中*/
-void writeAnswerFile(char* filename,int numRight,int numWrong,double accuracy)//待修改
+void writeAnswerFile(char* filename, int numRight, int numWrong, double accuracy)//待修改
 {
 	fstream f;
-	f.open(filename, ios::ate|ios::app);
+	f.open(filename, ios::ate | ios::app);
 	f << Resource[9] << endl << endl;
 	f << Resource[10] << numRight << endl;
 	f << Resource[11] << numWrong << endl;

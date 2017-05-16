@@ -14,6 +14,7 @@
 #include "Expression.h"
 #include "ExtendFunction.h"
 #include "LanguageResource.h"
+#include"Interaction.h"
 #include<fstream>
 
 int main(int argc, char* argv[])
@@ -27,27 +28,27 @@ int main(int argc, char* argv[])
 	cout << "Arithmetic Test For Primary School Students" << endl << endl;
 	ShowLanguageList();
 
-	char language[200];//用户输入语言
-	gets_s(language);
+//	char language[200];//用户输入语言
+	User user;
+	gets_s(user.language);
 
-	while (CheckLanguageSupport(language) == false)//输入语言检测
+	while (CheckLanguageSupport(user.language) == false)//输入语言检测
 	{
-		if (strcmp("e", language) == 0)
+		if (strcmp("e", user.language) == 0)
 		{
 			cout << endl << "The program is going to be finished. Goodbye!~" << endl;
 			getchar();
 			return 0;
 		}
-		cout << "Sorry. Your input is wrong or software does not support your language. " << endl;
-
-		ShowLanguageList();
-		gets_s(language);
+		user.WrongAgain();
+		gets_s(user.language);
 	}
 
-	char Langpath[255] = "";//根据用户的输入去形成一个路径
-	strcat_s(Langpath, "LangResourses\\");
-	strcat_s(Langpath, language);
-	strcat_s(Langpath, ".txt");
+	//char Langpath[255] = "";//根据用户的输入去形成一个路径
+	//strcat_s(Langpath, "LangResourses\\");
+	//strcat_s(Langpath, language);
+	//strcat_s(Langpath, ".txt");
+	user.MakeResource();
 
 	/*测试用例
 
@@ -58,9 +59,9 @@ int main(int argc, char* argv[])
 	}
 	*/
 
-	GetResource(Langpath);
-	n = GetInt(argv[1]);//输入检测
-	if (n == 0)
+	GetResource(user.Langpath);
+	user.n = GetInt(argv[1]);//输入检测
+	if (user.n == 0)
 	{
 		cout << Resource[0] << endl;
 		getchar();
@@ -70,22 +71,18 @@ int main(int argc, char* argv[])
 
 	fstream fileout;
 	fileout.open(argv[2], ios::ate | ios::app);
-	fileout << "您输入的题目数量为：" << n << endl;
+	fileout << "您输入的题目数量为：" << user.n << endl;
 	fileout.close();
 
-	for (i = 1; i <= n; i++)
+	for (i = 1; i <= user.n; i++)
 	{
 		Expression expression; //题目
 		expression = CreateProblems();
 
 		cout << "No." << i << "\t" << expression << endl;
-		//		fileout << "No." << i << "\t" << expression << endl;
-
 		cout << "\t" << Resource[8];
-		//		fileout << "\t" << Resource[8];
 
 		cin >> answer;
-		//		fileout << answer << endl;
 
 		bool result = Judge(answer, expression);
 		if (result == true)
@@ -100,15 +97,13 @@ int main(int argc, char* argv[])
 		expression.~Expression();
 	}
 
-	accuracy = numRight*1.0 / n * 100;
+	accuracy = numRight*1.0 / user.n * 100;
 
-	Print(numRight, numWrong, accuracy);	//输出用户答题情况函数；
+	user.Print(numRight, numWrong, accuracy);	//输出用户答题情况函数；
 
 	writeAnswerFile(argv[2], numRight, numWrong, accuracy);		//将判断最后正确数等输出到文件中；
-//	cout << exp[1] << endl;
 
 	getchar();
 	getchar();
-	fileout.close();
 	return 0;
 }
