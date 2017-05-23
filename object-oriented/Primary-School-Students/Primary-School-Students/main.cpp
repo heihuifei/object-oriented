@@ -14,13 +14,13 @@
 #include "Expression.h"
 #include "ExtendFunction.h"
 #include "LanguageResource.h"
-#include"Interaction.h"
-#include<fstream>
+#include "Interaction.h"
+#include <fstream>
 
 int main(int argc, char* argv[])
 {
 	int i;
-	int n;//用户输入想做的题目数量
+//	int n;//用户输入想做的题目数量
 	int answer;//用户输入题目答案
 	static int numRight = 0, numWrong = 0;//统计总题数、正确和错误题数
 	double accuracy;//正确率
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 	cout << "Arithmetic Test For Primary School Students" << endl << endl;
 	ShowLanguageList();
 
-//	char language[200];//用户输入语言
+	//	char language[200];//用户输入语言
 	User user;
 	gets_s(user.language);
 

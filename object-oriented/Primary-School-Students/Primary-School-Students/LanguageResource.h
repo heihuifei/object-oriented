@@ -7,6 +7,8 @@
 #include<iostream>
 #include<fstream>‎
 
+
+
 using namespace std;
 
 #define MAXLINE 30 //资源文件内的最大行数
@@ -94,3 +96,5 @@ void GetResource(char * filepath)
 	}
 	File.close();
 }
+
+
