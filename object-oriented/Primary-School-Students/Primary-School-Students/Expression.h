@@ -30,6 +30,42 @@ using namespace std;
 
 /*expression，表达式类。类声明部分: expression.h。*/
 //#include "expression.h"
+/*一个Random()基类，包含随机方法*/
+class Random
+{
+public:
+	virtual int RandomNum() { return 1; };
+	virtual char RandomOperator() { return ' '; };
+
+};
+
+/*Random()下的一个子类，用于随机生成数字*/
+class RandomNumber:public Random
+{
+public:
+	//随机生成一个数字，范围在0~10之间
+	int RandomNum();
+	/*{
+		srand(RandomeSeed());
+		int randNum;
+		randNum = rand() % 11;
+		return randNum;
+	}*/
+};
+/*Random()下的另一个子类，用于随机生成操作符*/
+class RandomOper :public Random
+{
+public:
+	//随机生成一个操作符并返回，返回类型为char
+	char RandomOperator();
+	/*{
+		int randOperIndex;
+		srand(RandomeSeed());
+		randOperIndex = rand() % operListLen;
+		return rand_Oper_List[randOperIndex];
+	}*/
+};
+
 class Expression
 {
 private:
@@ -41,8 +77,10 @@ public:
 	Expression();
 	~Expression();
 
-	int RandomNum();
-	char RandomOperator();
+	/*int RandomNum();
+	char RandomOperator();*/
+	RandomNumber random_number;
+	RandomOper random_operator;
 
 	string & AddOperator(const char oper);
 	string RandomPart();

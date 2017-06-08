@@ -82,7 +82,7 @@ Expression::~Expression()
 
 }
 /*随机生成一个数字，范围0~10*/
-int Expression::RandomNum()
+int RandomNumber::RandomNum()
 {
 	srand(RandomeSeed());
 	int randNum;
@@ -90,8 +90,8 @@ int Expression::RandomNum()
 	return randNum;
 }
 
-/*随机生成一个操作符并返回，返回值类型char*/
-char Expression::RandomOperator()
+///*随机生成一个操作符并返回，返回值类型char*/
+char RandomOper::RandomOperator()
 {
 	int randOperIndex;
 	srand(RandomeSeed());
@@ -118,7 +118,7 @@ string Expression::RandomPart()
 	if (randChoice == 0)
 	{
 		int randNum;
-		randNum = RandomNum();
+		randNum = random_number.RandomNum();
 		if (randNum == 10)
 		{
 			part += "10";
@@ -132,7 +132,7 @@ string Expression::RandomPart()
 	else if (randChoice == 1)
 	{
 		int randNum1;
-		randNum1 = RandomNum();
+		randNum1 = random_number.RandomNum();
 
 		part += "(";
 		if (randNum1 == 10)
@@ -144,16 +144,16 @@ string Expression::RandomPart()
 			part += (char)(randNum1 + 48);
 		}
 
-		char oper = RandomOperator();
+		char oper = random_operator.RandomOperator();
 		part += oper;
 
 		int randNum2;
-		randNum2 = RandomNum();
+		randNum2 = random_number.RandomNum();
 
 		if (oper == '/') //如果出现了触发，要确保第二个数不为0
 		{
 			while (randNum2 == 0)
-				randNum2 = RandomNum();
+				randNum2 = random_number.RandomNum();
 		}
 
 		if (randNum2 == 10)
@@ -279,7 +279,7 @@ Expression Expression::CreateInfixExpression()
 	for (i = 0; i < rank; i++)
 	{
 		char oper;
-		oper = RandomOperator();
+		oper = random_operator.RandomOperator();
 		AddOperator(oper);
 
 		randPart = RandomPart();
